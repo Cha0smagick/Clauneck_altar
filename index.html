@@ -82,6 +82,33 @@
         button:hover {
             background-color: #FFC700; /* Efecto hover */
         }
+        .ad-iframe {
+            margin: 20px 0;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border: 2px solid #FFD700;
+            z-index: 1000;
+            width: 300px;
+            text-align: center;
+        }
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +137,11 @@
         <li>ABUNDANCIA</li>
         <li>RIQUEZA</li>
     </ul>
+
+    <!-- Publicidad en el altar -->
+    <div class="ad-iframe">
+        <iframe data-aa='2293131' src='//ad.a-ads.com/2293131?size=250x300' style='width:250px; height:300px;'></iframe>
+    </div>
     
     <h3>Significado de la Cábala</h3>
     <p>La cábala nos enseña que el universo está interconectado. Las energías que invocamos a través de Clauneck nos traen riqueza no solo material, sino también espiritual.</p>
@@ -122,9 +154,18 @@
     <div id="commentList"></div>
 </div>
 
+<!-- Popup para publicidad -->
+<div class="popup-overlay" id="popupOverlay"></div>
+<div class="popup" id="popup">
+    <h3>Publicidad</h3>
+    <p>¡Visita nuestro <a href="http://grimoriomagiadelcaos.blogspot.com" target="_blank">blog de magia del caos</a> y suscríbete a nuestro <a href="https://www.youtube.com/channel/UCKidQcnWOzSvUOPZ6kxsfgg" target="_blank">canal de YouTube</a>!</p>
+    <button onclick="closePopup()">Cerrar</button>
+</div>
+
 <script>
     const comments = [];
-    
+    let popupShown = false;
+
     function submitComment() {
         const comment = document.getElementById('comment').value;
         if (comment) {
@@ -148,6 +189,24 @@
         const filename = "Plegarias_Clauneck.xlsx";
         XLSX.writeFile(wb, filename);
     }
+
+    function showPopup() {
+        if (!popupShown) {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('popupOverlay').style.display = 'block';
+            popupShown = true;
+        }
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('popupOverlay').style.display = 'none';
+    }
+
+    // Añadiendo eventos a los hipervínculos
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', showPopup);
+    });
 </script>
 
 </body>
