@@ -4,58 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Altar de Adoración a Clauneck</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     <style>
         body {
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
-            color: #333;
+            background-color: #1c1c1c; /* Fondo oscuro para un efecto esotérico */
+            font-family: 'Georgia', serif;
+            color: #fff; /* Texto blanco para contraste */
             text-align: center;
         }
         header {
-            background-color: #FFD700; /* Color dorado */
-            padding: 20px;
+            background-color: #C0C0C0; /* Oro viejo */
+            padding: 30px;
             border-radius: 10px;
         }
         h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin: 0;
+            color: #FFD700; /* Color dorado */
         }
         h2 {
-            font-size: 2em;
-            color: #8B4513; /* Color marrón */
+            font-size: 2.5em;
+            color: #66FF66; /* Verde dólar */
+            margin-top: 10px;
         }
         .altar {
-            background-color: #fff;
-            border: 2px solid #FFD700;
-            padding: 20px;
+            background-color: #333; /* Fondo oscuro del altar */
+            border: 3px solid #FFD700; /* Borde dorado */
+            padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
             margin: 20px auto;
-            max-width: 600px;
+            max-width: 800px;
+            position: relative;
+        }
+        .altar h3 {
+            color: #66FF66; /* Verde dólar */
+            font-size: 2em;
+            margin-top: 20px;
         }
         .comment-box {
             margin-top: 20px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: #444;
         }
         textarea {
             width: 100%;
             height: 100px;
             border-radius: 5px;
             border: 1px solid #ccc;
+            background-color: #555;
+            color: #fff;
         }
         button {
             background-color: #FFD700; /* Color dorado */
-            color: #fff;
+            color: #1c1c1c; /* Texto oscuro */
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.2em;
+            margin-top: 10px;
         }
         button:hover {
-            background-color: #FFC700;
+            background-color: #FFC700; /* Efecto hover */
         }
     </style>
 </head>
@@ -70,7 +83,7 @@
     <p>Bienvenido al altar de Clauneck, el espíritu de la riqueza y la abundancia. En este espacio, honramos su poder a través de la numerología y las invocaciones sagradas.</p>
     
     <h3>Correspondencias Numéricas</h3>
-    <p>Clauneck es asociado con el número 7, representando la perfección y la conexión espiritual. Utiliza este número en tu práctica.</p>
+    <p>Clauneck es asociado con el número <strong>7</strong>, representando la perfección y la conexión espiritual. Utiliza este número en tu práctica.</p>
     
     <h3>Nombres Sagrados de Invocación</h3>
     <p>Inscribe en tu corazón los nombres sagrados de Clauneck:</p>
@@ -79,6 +92,9 @@
         <li>ABUNDANCIA</li>
         <li>RIQUEZA</li>
     </ul>
+    
+    <h3>Mantra de Invocación</h3>
+    <p><em>"ahvalen essen clauneck kiarr"</em></p>
     
     <h3>Significado de la Cábala</h3>
     <p>La cábala nos enseña que el universo está interconectado. Las energías que invocamos a través de Clauneck nos traen riqueza no solo material, sino también espiritual.</p>
@@ -92,6 +108,8 @@
 </div>
 
 <script>
+    const comments = [];
+    
     function submitComment() {
         const comment = document.getElementById('comment').value;
         if (comment) {
@@ -99,10 +117,21 @@
             const newComment = document.createElement('p');
             newComment.textContent = comment;
             commentList.appendChild(newComment);
+            comments.push(comment);
             document.getElementById('comment').value = ''; // Limpiar el campo
+            saveCommentsToExcel();
         } else {
             alert("Por favor, escribe una plegaria antes de enviar.");
         }
+    }
+
+    function saveCommentsToExcel() {
+        const ws = XLSX.utils.json_to_sheet(comments.map((comment, index) => ({ Plegaria: comment })));
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Plegarias");
+        
+        const filename = "Plegarias_Clauneck.xlsx";
+        XLSX.writeFile(wb, filename);
     }
 </script>
 
