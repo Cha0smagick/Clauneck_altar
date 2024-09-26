@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altar de Adoración a Clauneck</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #FFD700; /* Color dorado */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        h2 {
+            font-size: 2em;
+            color: #8B4513; /* Color marrón */
+        }
+        .altar {
+            background-color: #fff;
+            border: 2px solid #FFD700;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .comment-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #FFD700; /* Color dorado */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #FFC700;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Altar de Adoración a Clauneck</h1>
+    <h2>Invocaciones Sagradas y Numerología</h2>
+</header>
+
+<div class="altar">
+    <p>Bienvenido al altar de Clauneck, el espíritu de la riqueza y la abundancia. En este espacio, honramos su poder a través de la numerología y las invocaciones sagradas.</p>
+    
+    <h3>Correspondencias Numéricas</h3>
+    <p>Clauneck es asociado con el número 7, representando la perfección y la conexión espiritual. Utiliza este número en tu práctica.</p>
+    
+    <h3>Nombres Sagrados de Invocación</h3>
+    <p>Inscribe en tu corazón los nombres sagrados de Clauneck:</p>
+    <ul>
+        <li>CLAUNECK</li>
+        <li>ABUNDANCIA</li>
+        <li>RIQUEZA</li>
+    </ul>
+    
+    <h3>Significado de la Cábala</h3>
+    <p>La cábala nos enseña que el universo está interconectado. Las energías que invocamos a través de Clauneck nos traen riqueza no solo material, sino también espiritual.</p>
+</div>
+
+<div class="comment-box">
+    <h3>Deja tu plegaria</h3>
+    <textarea id="comment" placeholder="Escribe tu plegaria aquí..."></textarea>
+    <button onclick="submitComment()">Enviar Plegaria</button>
+    <div id="commentList"></div>
+</div>
+
+<script>
+    function submitComment() {
+        const comment = document.getElementById('comment').value;
+        if (comment) {
+            const commentList = document.getElementById('commentList');
+            const newComment = document.createElement('p');
+            newComment.textContent = comment;
+            commentList.appendChild(newComment);
+            document.getElementById('comment').value = ''; // Limpiar el campo
+        } else {
+            alert("Por favor, escribe una plegaria antes de enviar.");
+        }
+    }
+</script>
+
+</body>
+</html>
